@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
 public interface Votable {
+    public void votar(Tripulante);
 }
