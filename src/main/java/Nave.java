@@ -27,7 +27,7 @@ public class Nave {
 
     public void iniciarVotacion(){}
 
-    public agregarTarea(Tarea){
+    public void agregarTarea(Tarea tarea){
     }
 
     public boolean verificarVictoriaTripulantes(){
