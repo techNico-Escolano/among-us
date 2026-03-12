@@ -12,7 +12,7 @@ public class DBUtil {
 
         // Ajustar puerto y nombre de la base de datos 👇
 
-        final String DB_URL = "jdbc:mysql://localhost:3306/jdbc";
+        final String DB_URL = "jdbc:mysql://localhost:3306/nave_espacial";
         final String USER = "root";
         final String PASS = "";
 
