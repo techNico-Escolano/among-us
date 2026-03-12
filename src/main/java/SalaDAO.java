@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+
+public interface SalaDAO {
+
+    public void insertar(Sala sala);
+
+    public Tripulante obtener(int id);
+
+    public ArrayList<Sala> obtenerTodods();
+
+    public void actualizar(Sala sala);
+
+    public void eliminar(int id);
+}
