@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Nave {
@@ -24,7 +23,26 @@ public class Nave {
         return tripulantes;
     }
 
+    public void mostrarEstadoNave(){}
+
+    public void iniciarVotacion(){}
+
     public agregarTarea(Tarea){
+    }
+
+    public boolean verificarVictoriaTripulantes(){
+
+    }
+
+    public boolean verificarVictoriaImpostor(){
+
+    }
+
+    public void limpiarPantalla(){
+
+    }
+
+    public void turno(){
 
     }
 
