@@ -68,11 +68,51 @@ public class Nave {
     }
 
     public boolean verificarVictoriaTripulantes(){
-        return false;
+        int tareasCompletadas = 0;
+        boolean tareasTerminadas = false;
+        for (Tarea t : tareas){
+            if (t.isCompletada()){
+                tareasCompletadas++;
+            }
+            if (tareasCompletadas == tareas.size()){
+                tareasTerminadas = true;
+            }
+        }
+
+        boolean impostorMuerto = false;
+        for (Tripulante tripulante : tripulantes){
+            if (tripulante.getRol().equalsIgnoreCase("Impostor")){
+                if (!tripulante.isVivo()){
+                    impostorMuerto = true;
+                }
+            }
+        }
+        boolean victoria = false;
+        if (impostorMuerto || tareasTerminadas){
+            victoria = true;
+        }
+        return victoria;
     }
 
     public boolean verificarVictoriaImpostor(){
-        return false;
+        int impostoresVivos = 0;
+        int tripulantesVivos = 0;
+
+        for (Tripulante tripulante : tripulantes){
+            if (tripulante.isVivo()){
+                if (tripulante.getRol().equalsIgnoreCase("Impostor")){
+                    impostoresVivos++;
+                } else {
+                    tripulantesVivos++;
+                }
+            }
+        }
+
+        boolean resultado = false;
+        if (impostoresVivos >= tripulantesVivos){
+            resultado = true;
+        }
+        return resultado;
     }
 
     public void limpiarPantalla(){
