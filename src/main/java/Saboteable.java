@@ -1,3 +1,3 @@
 public interface Saboteable {
-    public void sabotear(Sala);
+    public void sabotear(Sala sala);
 }
