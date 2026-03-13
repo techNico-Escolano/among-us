@@ -23,23 +23,61 @@ public class Nave {
         return tripulantes;
     }
 
-    public void mostrarEstadoNave(){}
+    public void mostrarEstadoNave(){
+        String vivos = "";
+        String eliminados = "";
+
+        //Tripulantes vivos
+        for (Tripulante t : tripulantes){
+            if (t.isVivo()){
+                vivos += t.getNombre() + ", ";
+            } else {
+                eliminados += t.getNombre() + ", ";
+            }
+        }
+        if (vivos.isEmpty()) vivos = "ninguno  ";
+        if (eliminados.isEmpty()) eliminados = "ninguno  ";
+
+        System.out.println("Jugadores vivos: " + vivos);
+        System.out.println("Jugadores eliminados: " + eliminados);
+
+        String saboteada = "";
+        for (Sala s : salas){
+            if (s.isSaboteada()){
+                saboteada += s.getNombre() + ", ";
+            }
+        }
+        if (saboteada.isEmpty()) saboteada = "Ninguna sala saboteada.";
+        System.out.println("Salas saboteadas: " + saboteada);
+
+        int completadas = 0;
+        for (Tarea t : tareas){
+            if (t.isCompletada()){
+                completadas++;
+            }
+        }
+        System.out.println("Tareas completadas: " + completadas + "/" + tareas.size());
+        System.out.println("============================================");
+
+    }
 
     public void iniciarVotacion(){}
 
     public void agregarTarea(Tarea tarea){
+        this.tareas.add(tarea);
     }
 
     public boolean verificarVictoriaTripulantes(){
-
+        return false;
     }
 
     public boolean verificarVictoriaImpostor(){
-
+        return false;
     }
 
     public void limpiarPantalla(){
-
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     public void turno(){
