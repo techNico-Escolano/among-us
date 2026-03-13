@@ -5,9 +5,9 @@ public class Nave {
     private ArrayList<Sala> salas;
     private ArrayList<Tarea> tareas;
 
-    public Nave(ArrayList<Sala> salas, ArrayList<Tarea> tareas, ArrayList<Tripulante> tripulantes) {
+    public Nave(ArrayList<Sala> salas, ArrayList<Tripulante> tripulantes) {
         this.salas = salas;
-        this.tareas = tareas;
+        this.tareas = new ArrayList<>();
         this.tripulantes = tripulantes;
     }
 
@@ -23,28 +23,32 @@ public class Nave {
         return tripulantes;
     }
 
-    public void mostrarEstadoNave(){}
+    public void mostrarEstadoNave(){
 
-    public void iniciarVotacion(){}
+    }
+
+    public void iniciarVotacion(){
+
+    }
 
     public void agregarTarea(Tarea tarea){
+        this.tareas.add(tarea);
     }
 
     public boolean verificarVictoriaTripulantes(){
-
+        return false;
     }
 
     public boolean verificarVictoriaImpostor(){
-
+        return false;
     }
 
     public void limpiarPantalla(){
-
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     public void turno(){
 
     }
-
-
 }
