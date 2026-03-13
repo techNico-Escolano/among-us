@@ -4,7 +4,7 @@ public interface SalaDAO {
 
     public void insertar(Sala sala);
 
-    public Tripulante obtener(int id);
+    public Sala obtener(int id);
 
     public ArrayList<Sala> obtenerTodods();
 
