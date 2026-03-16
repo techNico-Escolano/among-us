@@ -187,8 +187,70 @@ public class Nave {
     }
 
     public void turno(){
+        Scanner scanner = new Scanner(System.in);
+        int opcion = 0;
+        for (Tripulante tripulanteActual : tripulantes){
+            if (tripulanteActual.isVivo()){
+                limpiarPantalla();
+                System.out.println("Pasa el ordenador a: " + tripulanteActual.getNombre() + "!");
+                System.out.println("Pulsa enter cuando estés listo...");
+                scanner.nextLine();
 
+                limpiarPantalla();
+                System.out.println("TURNO DE " + tripulanteActual.getNombre().toUpperCase());
+                System.out.println("Tu rol secreto: " + tripulanteActual.getRol());
+
+                mostrarEstadoNave();
+                if (!tripulanteActual.getRol().equalsIgnoreCase("impostor")){
+                    System.out.println("1) Realizar tarea.");
+                    System.out.println("2) Usar habilidad especial.");
+                    System.out.println("3) Convocar votación de emergencia.");
+                    System.out.println("4) Pasar turno.");
+                    System.out.println("Elige una opción: ");
+                    opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    if (opcion == 1){
+                        System.out.println("Realizando tarea...");
+                    } else if (opcion == 2){
+                        System.out.println("Habilidad especial activada.");
+                    } else if (opcion == 3){
+                        System.out.println("¡Votación de emergencia convocada!");
+                    } else if (opcion == 4){
+                        System.out.println("Pasando turno.");
+                    }
+                } else {
+                    System.out.println("1) Simular tarea.");
+                    System.out.println("2) Sabotear una sala.");
+                    System.out.println("3) Eliminar a un tripulante.");
+                    System.out.println("4) Convocar votación.");
+                    System.out.println("5) Pasar turno.");
+                    System.out.println("Elige una opción: ");
+                    opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    if (opcion == 1){
+                        System.out.println("Realizando tarea (mentira)...");
+                    } else if (opcion == 2){
+                        System.out.println("Saboteando sala...");
+                    } else if (opcion == 3){
+                        System.out.println("¡Has matado a Pedro! Escóndete!");
+                    } else if (opcion == 4){
+                        System.out.println("Convocando votación...");
+                    } else if (opcion == 5){
+                        System.out.println("Pasando turno...");
+                    }
+                }
+            }
+            if (verificarVictoriaTripulantes()){
+                limpiarPantalla();
+                System.out.println("¡VICTORIA DE LOS TRIPULANTES!");
+                return;
+            }
+
+            if (verificarVictoriaImpostor()){
+                limpiarPantalla();
+                System.out.println("¡VICTORIA DEL IMPOSTOR!");
+                return;
+            }
+        }
     }
-
-
 }
