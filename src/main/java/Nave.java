@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Nave {
     private ArrayList<Tripulante> tripulantes;
@@ -61,7 +62,72 @@ public class Nave {
 
     }
 
-    public void iniciarVotacion(){}
+    public void iniciarVotacion(){
+        int[] conteoVotos = new int[tripulantes.size()];
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 0; i < tripulantes.size(); i++) {
+            Tripulante votante = tripulantes.get(i);
+
+            if (votante.isVivo()){
+                limpiarPantalla();
+                System.out.println("Turno de voto de: " + votante.getNombre() + ":");
+                System.out.println("Tripulantes que puedes votar:");
+                for (int j = 0; j < tripulantes.size(); j++) {
+                    Tripulante candidato = tripulantes.get(j);
+                    if (candidato.isVivo()){
+                        System.out.println((j + 1) + ") " + candidato.getNombre());
+                    }
+                }
+                System.out.println("0) Saltar voto.");
+
+                System.out.println("A quién deseas votar? (1-" + tripulantes.size() + ", 0 para skip): ");
+                int opcion = scanner.nextInt();
+
+                if (opcion > 0 && opcion <= tripulantes.size()){
+                    int indiceVotado = opcion - 1;
+                    conteoVotos[indiceVotado]++;
+                    System.out.println(votante.getNombre() + " ha votado.");
+                } else {
+                    System.out.println(votante.getNombre() + " ha saltado el voto.");
+                }
+                System.out.println("Pulsa enter para continuar...");
+                scanner.nextLine();
+                scanner.nextLine();
+            }
+        }
+
+        int maxVotos = 0;
+        int indiceExpulsado = -1;
+        boolean empate = false;
+
+        for (int i = 0; i < conteoVotos.length; i++) {
+            if (conteoVotos[i] > maxVotos){
+                maxVotos = conteoVotos[i];
+                indiceExpulsado = i;
+                empate = false;
+            } else if (conteoVotos[i] == maxVotos && maxVotos > 0){
+                empate = true;
+            }
+        }
+        limpiarPantalla();
+        System.out.println("=== RESULTADO DE LA VOTACIÓN ===");
+        System.out.println("--------------------------------");
+        if (empate || maxVotos == 0){
+            System.out.println("En la votación ha habido empate (o nadie votó). Nadie es expulsado.");
+        } else {
+            Tripulante expulsado = tripulantes.get(indiceExpulsado);
+            expulsado.setVivo(false);
+            System.out.println("EXPULSADO");
+            System.out.println(expulsado.getNombre() + " ha sido expulsado de la nave.");
+
+            if (expulsado.getRol().equalsIgnoreCase("impostor")){
+                System.out.println("¡" + expulsado.getNombre() + " ERA el IMPOSTOR!");
+            } else {
+                System.out.println("¡" + expulsado.getNombre() + "NO era el IMPOSTOR");
+            }
+        }
+    }
 
     public void agregarTarea(Tarea tarea){
         this.tareas.add(tarea);
