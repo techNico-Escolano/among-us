@@ -1,10 +1,16 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TareaDAOImpl implements TareaDAO{
-
     @Override
     public void insertar(Tarea tarea) {
+        try(PreparedStatement preparedStatement = this.conexion.prepareStatement("INSERT INTO tarea(id_tarea, descripcion, completada, id_tripulante, id_sala) VALUES (?, ? ,?, ?, ?)")){
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

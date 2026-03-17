@@ -18,8 +18,8 @@ public class DBUtil {
 
         // Ajustar puerto y nombre de la base de datos 👆
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
-            this.connection = conn;
+        try {
+            this.connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
