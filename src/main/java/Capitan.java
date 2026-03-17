@@ -6,9 +6,17 @@ public class Capitan extends Tripulante{
     }
 
     @Override
-    public void habilidadEspecial() {}
+    public void habilidadEspecial() {
 
-    public void convocarVotacion(Nave nave) {}
+        System.out.println("El jugador " + getId() + ". " + getNombre() + " puede convocar votaciones!");
+    }
+
+    public void convocarVotacion(Nave nave) {
+
+        System.out.println("Iniciando proceso de votación...");
+        nave.iniciarVotacion();
+        System.out.println("Votación finalizada!");
+    }
 
     @Override
     public void realizarTarea(Tarea tarea) {

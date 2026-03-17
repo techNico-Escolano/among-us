@@ -1,4 +1,4 @@
-public abstract class Tripulante {
+public abstract class Tripulante implements Trabajable, Votable{
 
     private int id;
     private String nombre;
@@ -7,7 +7,6 @@ public abstract class Tripulante {
 
     public Tripulante(String nombre, String rol) {
 
-        this.id = id;
         this.nombre = nombre;
         this.rol = rol;
         this.vivo = true;
@@ -27,9 +26,48 @@ public abstract class Tripulante {
 
     public void setVivo(boolean vivo) { this.vivo = vivo; }
 
-    public void realizarTarea(Tarea tarea) {}
+    @Override
+    public void realizarTarea(Tarea tarea) {
 
-    public void votar (Tripulante sospechoso) {}
+        if (!isVivo()) {
+
+            System.out.println("El jugador " + this.id + ". " + this.nombre + " no está vivo, no puede realizar tareas.");
+            return;
+        }
+
+        if (tarea.getTripulanteAsignado() != this) {
+
+            System.out.println("El jugador " + this.id + ". " + this.nombre + " no tiene esta tarea asignada.");
+            return;
+        }
+
+        if (tarea.isCompletada()) {
+
+            System.out.println("El jugador " + this.id + ". " + this.nombre + " ya ha completado esta tarea.");
+            return;
+        }
+
+        tarea.setCompletada(true);
+        System.out.println("La tarea ha sido completada con éxito por el jugador " + this.id + ". " + this.nombre + ".");
+    }
+
+    @Override
+    public void votar (Tripulante sospechoso) {
+
+        if (!isVivo()) {
+
+            System.out.println("El jugador " + this.id + ". " + this.nombre + " no está vivo, no puede votar.");
+            return;
+        }
+
+        if (sospechoso == null) {
+
+            System.out.println("Se ha saltado el voto.");
+            return;
+        }
+
+        System.out.println("El jugador " + sospechoso.getId() + ". " + sospechoso.getNombre() + " ha sido votado.");
+    }
 
     public abstract void habilidadEspecial();
 
