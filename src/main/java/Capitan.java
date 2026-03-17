@@ -10,8 +10,6 @@ public class Capitan extends Tripulante{
 
     public void convocarVotacion(Nave nave) {}
 
-    public void eliminar(Tripulante tripulante) {}
-
     @Override
     public void realizarTarea(Tarea tarea) {
 
