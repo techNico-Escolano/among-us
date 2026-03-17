@@ -5,9 +5,7 @@ public class Tarea {
     private Tripulante tripulanteAsignado;
     private Sala sala;
 
-    public Tarea(Tripulante tripulanteAsignado, Sala sala, String descripcion) {
-        this.tripulanteAsignado = tripulanteAsignado;
-        this.sala = sala;
+    public Tarea(int idTarea, String descripcion, boolean completada, int idTripulante, int idSala) {
         this.descripcion = descripcion;
         this.completada = false;
     }
