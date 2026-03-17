@@ -73,7 +73,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
     }
 
     @Override
-    public ArrayList<Tripulante> obtenerTodods() {
+    public ArrayList<Tripulante> obtenerTodos() {
 
         String sqlReadAll = "SELECT * FROM tripulante";
         ArrayList<Tripulante> todosTripulantes = new ArrayList<>();

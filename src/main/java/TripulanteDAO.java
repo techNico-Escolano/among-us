@@ -6,7 +6,7 @@ public interface TripulanteDAO {
 
     public Tripulante obtener(int id);
 
-    public ArrayList<Tripulante> obtenerTodods();
+    public ArrayList<Tripulante> obtenerTodos();
 
     public void actualizar(Tripulante tripulante);
 
