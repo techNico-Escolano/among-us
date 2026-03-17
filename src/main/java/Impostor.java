@@ -7,6 +7,11 @@ public class Impostor extends Tripulante implements Saboteable{
 
     @Override
     public void habilidadEspecial() {}
+    public void eliminar(Tripulante tripulante) {}
 
 
+    @Override
+    public void sabotear(Sala sala) {
+
+    }
 }
