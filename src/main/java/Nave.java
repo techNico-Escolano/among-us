@@ -240,20 +240,19 @@ public class Nave {
                                 if (sala.isSaboteada()){
                                     salasSaboteadas.add(sala);
                                 }
-                                if (salasSaboteadas.isEmpty()){
+                            }
+                            if (salasSaboteadas.isEmpty()){
                                     System.out.println("No hay salas saboteadas.");
-                                } else {
-                                    for (int i = 0; i < salasSaboteadas.size(); i++) {
+                            } else {
+                                for (int i = 0; i < salasSaboteadas.size(); i++) {
                                         System.out.println((i + 1) + ") " + salasSaboteadas.get(i).getNombre());
-                                    }
-                                    System.out.println("Elige sala a reparar: ");
-                                    int eleccion = scanner.nextInt();
-                                    scanner.nextLine();
-
-                                    if (eleccion > 0 && eleccion <= salasSaboteadas.size()){
-                                        ((Ingeniero) tripulanteActual).repararSala(salasSaboteadas.get(eleccion - 1));
-                                        System.out.println("Sala reparada!");
-                                    }
+                                }
+                                System.out.println("Elige sala a reparar: ");
+                                int eleccion = scanner.nextInt();
+                                scanner.nextLine();
+                                if (eleccion > 0 && eleccion <= salasSaboteadas.size()){
+                                    ((Ingeniero) tripulanteActual).repararSala(salasSaboteadas.get(eleccion - 1));
+                                    System.out.println("Sala reparada!");
                                 }
                             }
                         } else if (tripulanteActual.getRol().equalsIgnoreCase("medico")){
@@ -299,6 +298,7 @@ public class Nave {
                         }
                         System.out.println("Elige sala: ");
                         int eleccionSala = scanner.nextInt();
+                        scanner.nextLine();
                         if (eleccionSala > 0 && eleccionSala <= salas.size()){
                             impostor.sabotear(salas.get(eleccionSala - 1));
                             System.out.println("Sabotaje realizado en secreto!");
@@ -313,8 +313,10 @@ public class Nave {
                         }
                         System.out.println("Elige víctima: ");
                         int eleccionVictima = scanner.nextInt();
+                        scanner.nextLine();
                         if (eleccionVictima > 0 && eleccionVictima <= tripulantes.size()){
-
+                            impostor.eliminar(tripulantes.get(eleccionVictima - 1));
+                            System.out.println("Has eliminado a " + tripulantes.get(eleccionVictima - 1).getNombre() + " en secreto.");
                         }
                     } else if (opcion == 4){
                         System.out.println("Convocando votación para disimular...");
