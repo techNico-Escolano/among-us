@@ -27,7 +27,7 @@ public class SalaDAOImpl implements SalaDAO{
     @Override
     public Sala obtener(int id) {
 
-        String sqlRead = "SELECT * FROM sala WHERE id = ?";
+        String sqlRead = "SELECT * FROM sala WHERE id_sala = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlRead)) {
 
@@ -37,7 +37,7 @@ public class SalaDAOImpl implements SalaDAO{
 
                 if (rs.next()) {
 
-                    int idSala = rs.getInt("id");
+                    int idSala = rs.getInt("id_sala");
                     String nombreSala = rs.getString("nombre");
                     boolean saboteoSala = rs.getBoolean("saboteada");
 
@@ -63,7 +63,7 @@ public class SalaDAOImpl implements SalaDAO{
 
             while (rs.next()) {
 
-                int idSala = rs.getInt("id");
+                int idSala = rs.getInt("id_sala");
                 String nombreSala = rs.getString("nombre");
                 boolean saboteoSala = rs.getBoolean("saboteada");
 
@@ -79,7 +79,7 @@ public class SalaDAOImpl implements SalaDAO{
     @Override
     public void actualizar(Sala sala) {
 
-        String sqlUpdate = "UPDATE sala SET nombre = ?, saboteada = ? WHERE id = ?";
+        String sqlUpdate = "UPDATE sala SET nombre = ?, saboteada = ? WHERE id_sala = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlUpdate)) {
 
@@ -97,7 +97,7 @@ public class SalaDAOImpl implements SalaDAO{
     @Override
     public void eliminar(int id) {
 
-        String sqlDelete = "DELETE FROM sala WHERE id = ?";
+        String sqlDelete = "DELETE FROM sala WHERE id_sala = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlDelete)) {
 

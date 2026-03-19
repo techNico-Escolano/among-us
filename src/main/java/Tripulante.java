@@ -6,7 +6,6 @@ public abstract class Tripulante implements Trabajable, Votable{
     private boolean vivo;
 
     public Tripulante(String nombre, String rol) {
-
         this.nombre = nombre;
         this.rol = rol;
         this.vivo = true;
