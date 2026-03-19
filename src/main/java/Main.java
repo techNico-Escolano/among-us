@@ -21,7 +21,7 @@ public class Main {
         }
 
         System.out.println("🧑‍🚀 --- AMONG US --- 🧑‍🚀");
-        System.out.println("-".repeat(15));
+        System.out.println("-".repeat(30));
         System.out.println("¿Cuántos jugadores vais a ser?: ");
         int numeroParticipantes = scanner.nextInt();
         scanner.nextLine();
@@ -47,6 +47,16 @@ public class Main {
         Impostor imp = new Impostor(victimaImpostor.getNombre());
 
         listaJugadores.set(indiceImpostor, imp);
+        int turno = 0;
+        for (Tarea tarea : listaTareas){
+            Tripulante jugadorAsignado = listaJugadores.get(turno);
+            tarea.setTripulanteAsignado(jugadorAsignado);
+            turno++;
+
+            if (turno == listaJugadores.size()){
+                turno = 0;
+            }
+        }
 
         Nave miNave = new Nave(listaSalas, listaTareas, listaJugadores);
         System.out.println("=== COMIENZA LA PARTIDA... ===");
