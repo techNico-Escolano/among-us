@@ -28,7 +28,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
     @Override
     public Tripulante obtener(int id) {
 
-        String sqlRead = "SELECT * FROM tripulante WHERE id = ?";
+        String sqlRead = "SELECT * FROM tripulante WHERE id_tripulante = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlRead)) {
 
@@ -38,7 +38,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
 
                 if (rs.next()) {
 
-                    int idTripulante = rs.getInt("id");
+                    int idTripulante = rs.getInt("id_tripulante");
                     String nombreTripulante = rs.getString("nombre");
                     String rolTripulante = rs.getString("rol");
                     boolean vivoTripulante = rs.getBoolean("vivo");
@@ -83,7 +83,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
 
             while (rs.next()) {
 
-                int idTripulante = rs.getInt("id");
+                int idTripulante = rs.getInt("id_tripulante");
                 String nombreTripulante = rs.getString("nombre");
                 String rolTripulante = rs.getString("rol");
                 boolean vivoTripulante = rs.getBoolean("vivo");
@@ -118,7 +118,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
     @Override
     public void actualizar(Tripulante tripulante) {
 
-        String sqlUpdate = "UPDATE tripulante SET nombre = ?, rol = ?, vivo = ? WHERE id = ?";
+        String sqlUpdate = "UPDATE tripulante SET nombre = ?, rol = ?, vivo = ? WHERE id_tripulante = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlUpdate)) {
 
@@ -137,7 +137,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
     @Override
     public void eliminar(int id) {
 
-        String sqlDelete = "DELETE FROM tripulante WHERE id = ?";
+        String sqlDelete = "DELETE FROM tripulante WHERE id_tripulante = ?";
 
         try (PreparedStatement pst = this.connection.prepareStatement(sqlDelete)) {
 
