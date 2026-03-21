@@ -150,6 +150,7 @@ public class Nave {
             if (tripulante.getRol().equalsIgnoreCase("Impostor")){
                 if (!tripulante.isVivo()){
                     impostorMuerto = true;
+                    break;
                 }
             }
         }
