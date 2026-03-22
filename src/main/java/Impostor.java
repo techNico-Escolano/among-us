@@ -15,13 +15,14 @@ public class Impostor extends Tripulante implements Saboteable{
 
         if (!tripulante.isVivo()) {
 
-            System.out.println("El jugador " + tripulante.getId() + ". " + tripulante.getNombre() + "no está vivo, no puedes eliminarle.");
+            System.out.println("El jugador " + tripulante.getId() + ". " + tripulante.getNombre() + " no está vivo, no puedes eliminarle.");
             return;
         }
 
         if (tripulante == this) {
 
             System.out.println("No puedes eliminarte a ti mismo!");
+            this.setVivo(true);
             return;
         }
 
@@ -32,7 +33,7 @@ public class Impostor extends Tripulante implements Saboteable{
     @Override
     public void sabotear(Sala sala) {
 
-        System.out.println("Saboteando sala" + sala.getNombre() + "...");
+        System.out.println("Saboteando sala " + sala.getNombre() + "...");
         sala.setSaboteada(true);
         System.out.println("Sala " + sala.getNombre() + " saboteada!");
     }
