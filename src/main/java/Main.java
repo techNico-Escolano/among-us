@@ -51,6 +51,13 @@ public class Main {
         int turno = 0;
         for (Tarea tarea : listaTareas){
             Tripulante jugadorAsignado = listaJugadores.get(turno);
+            while(jugadorAsignado.getRol().equalsIgnoreCase("impostor")){
+                turno++;
+                if (turno >= listaJugadores.size()){
+                    turno = 0;
+                }
+                jugadorAsignado = listaJugadores.get(turno);
+            }
             tarea.setTripulanteAsignado(jugadorAsignado);
             turno++;
 
