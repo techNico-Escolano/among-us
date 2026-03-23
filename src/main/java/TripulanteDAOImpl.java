@@ -43,25 +43,23 @@ public class TripulanteDAOImpl implements TripulanteDAO{
                     String rolTripulante = rs.getString("rol");
                     boolean vivoTripulante = rs.getBoolean("vivo");
 
-                    if (rolTripulante.equals("Impostor")) {
-
-                        return new Impostor(nombreTripulante);
+                    Tripulante t = null;
+                    if (rolTripulante.equalsIgnoreCase("Impostor")) {
+                        t = new Impostor(nombreTripulante);
+                    } else if (rolTripulante.equalsIgnoreCase("Capitan")) {
+                        t = new Capitan(nombreTripulante);
+                    } else if (rolTripulante.equalsIgnoreCase("Ingeniero")) {
+                        t = new Ingeniero(nombreTripulante);
+                    } else if (rolTripulante.equalsIgnoreCase("Medico")) {
+                        t = new Medico(nombreTripulante);
                     }
 
-                    if (rolTripulante.equals("Capitan")) {
-
-                        return new Capitan(nombreTripulante);
+                    if (t != null) {
+                        t.setId(idTripulante);
+                        t.setVivo(vivoTripulante);
                     }
 
-                    if (rolTripulante.equals("Ingeniero")) {
-
-                        return new Ingeniero(nombreTripulante);
-                    }
-
-                    if (rolTripulante.equals("Medico")) {
-
-                        return new Medico(nombreTripulante);
-                    }
+                    return t;
                 }
             }
 
@@ -74,7 +72,6 @@ public class TripulanteDAOImpl implements TripulanteDAO{
 
     @Override
     public ArrayList<Tripulante> obtenerTodos() {
-
         String sqlReadAll = "SELECT * FROM tripulante";
         ArrayList<Tripulante> todosTripulantes = new ArrayList<>();
 
@@ -88,24 +85,23 @@ public class TripulanteDAOImpl implements TripulanteDAO{
                 String rolTripulante = rs.getString("rol");
                 boolean vivoTripulante = rs.getBoolean("vivo");
 
-                if (rolTripulante.equals("Impostor")) {
-
-                    todosTripulantes.add(new Impostor(nombreTripulante));
+                Tripulante t = null;
+                // Escudo Anti-Mayúsculas y Anti-Tildes activado 🛡️
+                if (rolTripulante.equalsIgnoreCase("Impostor")) {
+                    t = new Impostor(nombreTripulante);
+                } else if (rolTripulante.equalsIgnoreCase("Capitán") || rolTripulante.equalsIgnoreCase("Capitan")) {
+                    t = new Capitan(nombreTripulante);
+                } else if (rolTripulante.equalsIgnoreCase("Ingeniero")) {
+                    t = new Ingeniero(nombreTripulante);
+                } else if (rolTripulante.equalsIgnoreCase("Médico") || rolTripulante.equalsIgnoreCase("Medico")) {
+                    t = new Medico(nombreTripulante);
                 }
 
-                if (rolTripulante.equals("Capitan")) {
-
-                    todosTripulantes.add(new Capitan(nombreTripulante));
-                }
-
-                if (rolTripulante.equals("Ingeniero")) {
-
-                    todosTripulantes.add(new Ingeniero(nombreTripulante));
-                }
-
-                if (rolTripulante.equals("Medico")) {
-
-                    todosTripulantes.add(new Medico(nombreTripulante));
+                // Si hemos reconocido el rol, le metemos los datos de BD y lo subimos a la nave
+                if (t != null) {
+                    t.setId(idTripulante);
+                    t.setVivo(vivoTripulante);
+                    todosTripulantes.add(t); // ¡Ahora está a salvo aquí dentro!
                 }
             }
         } catch (SQLException e) {
@@ -114,6 +110,7 @@ public class TripulanteDAOImpl implements TripulanteDAO{
 
         return todosTripulantes;
     }
+
 
     @Override
     public void actualizar(Tripulante tripulante) {

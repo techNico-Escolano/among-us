@@ -4,7 +4,7 @@ public class Sala {
     private String nombre;
     private boolean saboteada;
 
-    public Sala(String nombre) {
+    public Sala(int id, String nombre) {
 
         this.id = id;
         this.nombre = nombre;

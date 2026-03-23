@@ -10,7 +10,7 @@ public class Tarea {
         this.tripulanteAsignado = tripulanteAsignado;
         this.sala = sala;
         this.descripcion = descripcion;
-        this.completada = false;
+        this.completada = completada;
     }
 
     public boolean isCompletada() {
