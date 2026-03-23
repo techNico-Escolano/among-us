@@ -330,13 +330,13 @@ public class Nave {
             if (verificarVictoriaTripulantes()){
                 limpiarPantalla();
                 System.out.println("¡VICTORIA DE LOS TRIPULANTES!");
-                return;
+                System.exit(0);
             }
 
             if (verificarVictoriaImpostor()){
                 limpiarPantalla();
                 System.out.println("¡VICTORIA DEL IMPOSTOR!");
-                return;
+                System.exit(0);
             }
         }
     }
