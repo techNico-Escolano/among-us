@@ -34,7 +34,7 @@ public abstract class Tripulante implements Trabajable, Votable{
             return;
         }
 
-        if (tarea.getTripulanteAsignado().getNombre().equals(this.nombre)) {
+        if (!tarea.getTripulanteAsignado().getNombre().equals(this.nombre)) {
             System.out.println("El jugador " + this.id + ". " + this.nombre + " no tiene esta tarea asignada.");
             return;
         }
