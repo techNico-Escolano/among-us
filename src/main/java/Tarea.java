@@ -5,9 +5,12 @@ public class Tarea {
     private Tripulante tripulanteAsignado;
     private Sala sala;
 
-    public Tarea(int idTarea, String descripcion, boolean completada, int idTripulante, int idSala) {
+    public Tarea(int id, String descripcion, boolean completada, Tripulante tripulanteAsignado, Sala sala) {
+        this.id = id;
+        this.tripulanteAsignado = tripulanteAsignado;
+        this.sala = sala;
         this.descripcion = descripcion;
-        this.completada = false;
+        this.completada = completada;
     }
 
     public boolean isCompletada() {

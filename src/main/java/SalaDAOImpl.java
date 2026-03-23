@@ -41,7 +41,7 @@ public class SalaDAOImpl implements SalaDAO{
                     String nombreSala = rs.getString("nombre");
                     boolean saboteoSala = rs.getBoolean("saboteada");
 
-                    return new Sala(nombreSala);
+                    return new Sala(id, nombreSala);
                 }
             }
 
@@ -67,7 +67,7 @@ public class SalaDAOImpl implements SalaDAO{
                 String nombreSala = rs.getString("nombre");
                 boolean saboteoSala = rs.getBoolean("saboteada");
 
-                todasSalas.add(new Sala(nombreSala));
+                todasSalas.add(new Sala(idSala, nombreSala));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

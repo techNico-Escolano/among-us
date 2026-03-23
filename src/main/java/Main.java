@@ -40,6 +40,7 @@ public class Main {
             } else {
                 nuevoTripulante = new Ingeniero(nombreJugador);
             }
+            nuevoTripulante.setId(i + 1);
             listaJugadores.add(nuevoTripulante);
         }
         int indiceImpostor = new Random().nextInt(listaJugadores.size());
@@ -50,6 +51,13 @@ public class Main {
         int turno = 0;
         for (Tarea tarea : listaTareas){
             Tripulante jugadorAsignado = listaJugadores.get(turno);
+            while(jugadorAsignado.getRol().equalsIgnoreCase("impostor")){
+                turno++;
+                if (turno >= listaJugadores.size()){
+                    turno = 0;
+                }
+                jugadorAsignado = listaJugadores.get(turno);
+            }
             tarea.setTripulanteAsignado(jugadorAsignado);
             turno++;
 

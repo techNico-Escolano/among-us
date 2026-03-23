@@ -42,7 +42,7 @@ public class TareaDAOImpl implements TareaDAO{
                     Tripulante tripulanteAsignado = this.tripulanteDAO.obtener(idTripulante);
                     Sala salaAsignada = this.salaDAO.obtener(idSala);
 
-                    return new Tarea(idTarea, descripcion, completada, idTripulante, idSala);
+                    return new Tarea(idTarea, descripcion, completada, tripulanteAsignado, salaAsignada);
                 }
                 return null;
             }
@@ -69,7 +69,7 @@ public class TareaDAOImpl implements TareaDAO{
                 Tripulante tripulante = this.tripulanteDAO.obtener(idTripulante);
                 Sala sala = this.salaDAO.obtener(idSala);
 
-                Tarea tarea = new Tarea(idTarea, descripcion, completada, idTripulante, idSala);
+                Tarea tarea = new Tarea(idTarea, descripcion, completada, tripulante, sala);
                 tareas.add(tarea);
             }
         } catch (SQLException e) {
