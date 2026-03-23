@@ -8,7 +8,7 @@ public class Medico extends Tripulante{
     @Override
     public void habilidadEspecial() {
 
-        System.out.println("El jugador " + getId() + ". " + getNombre() + "puede examinar a los tripulantes!");
+        System.out.println("El jugador " + getId() + ". " + getNombre() + " puede examinar a los tripulantes!");
     }
 
     public void examinar(Tripulante tripulante) {
