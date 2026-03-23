@@ -40,6 +40,7 @@ public class Main {
             } else {
                 nuevoTripulante = new Ingeniero(nombreJugador);
             }
+            nuevoTripulante.setId(i + 1);
             listaJugadores.add(nuevoTripulante);
         }
         int indiceImpostor = new Random().nextInt(listaJugadores.size());

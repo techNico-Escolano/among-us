@@ -229,7 +229,6 @@ public class Nave {
                             scanner.nextLine();
                             if (eleccion > 0 && eleccion <= misTareas.size()){
                                 tripulanteActual.realizarTarea(misTareas.get(eleccion - 1));
-                                System.out.println("¡Tarea completada!");
                             }
                         }
                     } else if (opcion == 2){
@@ -306,18 +305,23 @@ public class Nave {
                         }
                     } else if (opcion == 3){
                         System.out.println("¿A qué tripulante quieres eliminar?: " );
-                        for (int i = 0; i < tripulantes.size(); i++) {
-                            Tripulante victima = tripulantes.get(i);
-                            if (victima.isVivo() && victima.getId() != impostor.getId()){
-                                System.out.println((i + 1) + ") " + victima.getNombre());
+                        ArrayList<Tripulante> posiblesVictimas = new ArrayList<>();
+                        for (Tripulante victima : tripulantes) {
+                            if (victima.isVivo() && victima != impostor) {
+                                posiblesVictimas.add(victima);
                             }
                         }
-                        System.out.println("Elige víctima: ");
+
+                        for (int i = 0; i < posiblesVictimas.size(); i++) {
+                            System.out.println((i + 1) + ") " + posiblesVictimas.get(i).getNombre());
+                        }
+
+                        System.out.println("Elige víctima (0 para cancelar): ");
                         int eleccionVictima = scanner.nextInt();
                         scanner.nextLine();
-                        if (eleccionVictima > 0 && eleccionVictima <= tripulantes.size()){
-                            impostor.eliminar(tripulantes.get(eleccionVictima - 1));
-                            System.out.println("Has eliminado a " + tripulantes.get(eleccionVictima - 1).getNombre() + " en secreto.");
+
+                        if (eleccionVictima > 0 && eleccionVictima <= posiblesVictimas.size()){
+                            impostor.eliminar(posiblesVictimas.get(eleccionVictima - 1));
                         }
                     } else if (opcion == 4){
                         System.out.println("Convocando votación para disimular...");
