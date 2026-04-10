@@ -26,3 +26,7 @@ Este proyecto ha sido desarrollado como una práctica avanzada de arquitectura d
 1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com/techNico-Escolano/among-us.git
+
+## 👥 Autores
+- Nicolás Escolano García -> Lógica del Juego, Main, Entidades e Integración
+- Aitor Mateos Gamazo -> Implementación DAO, Base de Datos e Interfaces
